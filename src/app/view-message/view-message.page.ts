@@ -12,17 +12,14 @@ export class ViewMessagePage implements OnInit {
 
   constructor(
     private data: DataService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.message = this.data.getMessageById(parseInt(id, 10));
   }
-
-  getBackButtonText() {
-    const win = window as any;
-    const mode = win && win.Ionic && win.Ionic.mode;
-    return mode === 'ios' ? 'Inbox' : '';
+  ionViewWillEnter() {
+    const MessageName = this.activatedRoute.snapshot.paramMap.get('name');
   }
 }

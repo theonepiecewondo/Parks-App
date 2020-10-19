@@ -7,16 +7,22 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(private data: DataService) {}
-
-  refresh(ev) {
-    setTimeout(() => {
-      ev.detail.complete();
-    }, 3000);
-  }
+  constructor(private data: DataService) { }
 
   getMessages(): Message[] {
     return this.data.getMessages();
+  }
+
+  customHeaderFn(record, recordIndex, records) {
+    if (recordIndex > 0) {
+      if (record.name.charAt(0) !== records[recordIndex - 1].name.charAt(0)) {
+        return record.name.charAt(0);
+      } else {
+        return null;
+      }
+    } else {
+      return record.name.charAt(0);
+    }
   }
 
 }
