@@ -1,0 +1,7 @@
+{
+  "name": "Parks",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
